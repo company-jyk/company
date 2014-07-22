@@ -1,5 +1,5 @@
 approved = (name) ->
-	name is 'J.K' or WList.findOne(username:name)?
+	name is 'somebody' or WList.findOne(username:name)?
 
 
 Meteor.publish "post", (username, id)->
@@ -7,7 +7,7 @@ Meteor.publish "post", (username, id)->
 		Posts.findOne id if id?
 
 Meteor.publish "posts", (username)->
-	if username? and approved username #and username? in ['j.k'] #<--this works! so we will add white-list
+	if username? and approved username #and username? in ['somebody'] #<--this works! so we will add white-list
 		Posts.find {} #parent:null #,
 			#fields:
 			#	content:false
@@ -52,7 +52,7 @@ Meteor.methods
 				by: username
 
 	'removeUser':(username, thename)->
-		if username is 'J.K'
+		if username is 'somebody'
 			WList.remove 
 				username: thename 
 		
